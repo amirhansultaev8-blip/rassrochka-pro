@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Рассрочка Pro</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div>
+        <h1>Рассрочка Pro</h1>
+        <p>Учёт клиентов, договоров и оплат</p>
+      </div>
+      <button id="logoutBtn" class="ghost hidden">Выйти</button>
+    </header>
+
+    <section id="authCard" class="card">
+      <h2>Вход / регистрация</h2>
+      <p class="muted">Сначала вставь свои ключи Supabase в <code>app.js</code>.</p>
+      <div class="grid2">
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Пароль" />
+      </div>
+      <div class="actions">
+        <button id="signInBtn">Войти</button>
+        <button id="signUpBtn" class="ghost">Регистрация</button>
+      </div>
+      <div id="authMsg" class="msg"></div>
+    </section>
+
+    <section id="appCard" class="hidden">
+      <div class="stats">
+        <div class="card stat"><span>Клиентов</span><strong id="statClients">0</strong></div>
+        <div class="card stat"><span>Всего выдано</span><strong id="statTotal">0 ₽</strong></div>
+        <div class="card stat"><span>Оплачено</span><strong id="statPaid">0 ₽</strong></div>
+        <div class="card stat"><span>Остаток</span><strong id="statRest">0 ₽</strong></div>
+      </div>
+
+      <section class="card">
+        <h2>Добавить клиента</h2>
+        <div class="grid2">
+          <input id="clientName" placeholder="ФИО клиента" />
+          <input id="phone" placeholder="Телефон" />
+          <input id="product" placeholder="Товар" />
+          <input id="guarantor" placeholder="Поручитель" />
+          <input id="totalPrice" type="number" placeholder="Сумма договора" />
+          <input id="monthlyPayment" type="number" placeholder="Ежемесячный платёж" />
+          <input id="nextPaymentDate" type="date" />
+          <input id="contractNumber" placeholder="Номер договора" />
+        </div>
+        <div class="actions">
+          <button id="saveClientBtn">Сохранить клиента</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="row space">
+          <h2>Клиенты</h2>
+          <input id="search" placeholder="Поиск по имени, телефону, товару" />
+        </div>
+        <div class="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Клиент</th>
+                <th>Телефон</th>
+                <th>Товар</th>
+                <th>Сумма</th>
+                <th>Оплачено</th>
+                <th>Остаток</th>
+                <th>Платёж</th>
+                <th>Дата</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="clientsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <template id="clientRowTpl">
+    <tr>
+      <td class="name"></td>
+      <td class="phone"></td>
+      <td class="product"></td>
+      <td class="total"></td>
+      <td class="paid"></td>
+      <td class="rest"></td>
+      <td><input class="paymentInput" type="number" min="0" placeholder="Оплата" /></td>
+      <td class="nextDate"></td>
+      <td><button class="addPaymentBtn">+ Оплата</button></td>
+    </tr>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
