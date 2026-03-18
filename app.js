@@ -1,6 +1,5 @@
-const SUPABASE_URL = 'PASTE_SUPABASE_URL_HERE';
-const SUPABASE_KEY = 'PASTE_SUPABASE_PUBLISHABLE_KEY_HERE';
-
+const SUPABASE_URL = 'https://dkcjlrqiwrkfwhl.supabase.co';
+const SUPABASE_KEY = 'СЮДА_ВСТАВЬ_КЛЮЧ';
 const authCard = document.getElementById('authCard');
 const appCard = document.getElementById('appCard');
 const authMsg = document.getElementById('authMsg');
